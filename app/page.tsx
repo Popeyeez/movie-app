@@ -3,7 +3,6 @@ import { MovieCard, Header, List } from "@/components/home";
 export default function Home() {
   return (
     <div className="flex gap-8 flex-wrap px-20 w-[1440px]">
-      <Header />
       <List />
       <div className="flex-wrap flex gap-8">
         <MovieCard
