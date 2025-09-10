@@ -14,6 +14,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 
 export function DropdownMenuDemo() {
   return (
@@ -35,18 +36,27 @@ export function DropdownMenuDemo() {
         </div>
 
         <DropdownMenuGroup className="flex flex-wrap gap-2">
-          <DropdownMenuItem>
-            Action
-            <GoChevronRight />
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Adventure
-            <GoChevronRight />
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Animation
-            <GoChevronRight />
-          </DropdownMenuItem>
+          <Link href="/genre">
+            <DropdownMenuItem>
+              Action
+              <GoChevronRight />
+            </DropdownMenuItem>
+          </Link>
+
+          <Link href="/genre">
+            <DropdownMenuItem>
+              Adventure
+              <GoChevronRight />
+            </DropdownMenuItem>
+          </Link>
+
+          <Link href="/genre">
+            <DropdownMenuItem>
+              Animation
+              <GoChevronRight />
+            </DropdownMenuItem>
+          </Link>
+
           <DropdownMenuItem>
             Biography
             <GoChevronRight />

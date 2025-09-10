@@ -1,8 +1,11 @@
-import { MovieCard, Header, List } from "@/components/home";
+import { MovieCard, List } from "@/components/home";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex gap-8 flex-wrap px-20 w-[1440px]">
+    <div className="flex gap-8 flex-wrap px-20 ">
+      <img className="mt-6 w-full" src="/images/mainpic1.jpg" alt="" />
+
       <List />
       <div className="flex-wrap flex gap-8">
         <MovieCard

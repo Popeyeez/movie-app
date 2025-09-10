@@ -1,25 +1,29 @@
 import { ThemeToggler, DropdownMenuDemo, InputDemo } from "@/components/home";
 import { FiFilm } from "react-icons/fi";
+import Link from "next/link";
+import { Search } from "lucide-react";
+
 export function Header() {
   return (
-    <div>
-      <div className="h-15 w-full flex gap-3">
-        <div className="flex justify-between items-center gap-95">
-          <div className="flex items-center gap-2">
-            <FiFilm color="#4338CA" />
-            <span className="text-indigo-700 text-[16px] font-bold italic">
-              Movie Z
-            </span>
-          </div>
-          <DropdownMenuDemo />
-        </div>
-        <div className="flex justify-between items-center gap-80">
-          <InputDemo />
-          <ThemeToggler />
-        </div>
+    <div className="h-15 w-full gap-3 flex justify-between px-20 items-center">
+      <div className="flex items-center gap-2">
+        <FiFilm color="#4338CA" />
+
+        <Link href="/">
+          <span className="text-indigo-700 text-[16px] font-bold italic flex">
+            Movie Z
+          </span>
+        </Link>
       </div>
 
-      <img className="mt-6" src="/images/mainpic1.jpg" alt="" />
+      <div className="flex items-center gap-5">
+        <DropdownMenuDemo />
+
+        <Search className="-mr-13" />
+        <InputDemo />
+      </div>
+
+      <ThemeToggler />
     </div>
   );
 }
