@@ -2,8 +2,119 @@ import { MovieCard } from "@/components/home";
 import { GoChevronRight } from "react-icons/go";
 
 import React from "react";
+const GENRES = [
+  {
+    id: 28,
+    name: "Action",
+  },
+  {
+    id: 12,
+    name: "Adventure",
+  },
+  {
+    id: 16,
+    name: "Animation",
+  },
+  {
+    id: 35,
+    name: "Comedy",
+  },
+  {
+    id: 80,
+    name: "Crime",
+  },
+  {
+    id: 99,
+    name: "Documentary",
+  },
+  {
+    id: 18,
+    name: "Drama",
+  },
+  {
+    id: 10751,
+    name: "Family",
+  },
+  {
+    id: 14,
+    name: "Fantasy",
+  },
+  {
+    id: 36,
+    name: "History",
+  },
+  {
+    id: 27,
+    name: "Horror",
+  },
+  {
+    id: 10402,
+    name: "Music",
+  },
+  {
+    id: 9648,
+    name: "Mystery",
+  },
+  {
+    id: 10749,
+    name: "Romance",
+  },
+  {
+    id: 878,
+    name: "Science Fiction",
+  },
+  {
+    id: 10770,
+    name: "TV Movie",
+  },
+  {
+    id: 53,
+    name: "Thriller",
+  },
+  {
+    id: 10752,
+    name: "War",
+  },
+  {
+    id: 37,
+    name: "Western",
+  },
+];
+type MovieType = {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  overview: string;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  vote_average: number;
+};
 
-const Genre = () => {
+type movieResponseType = {
+  page: number;
+  totalPages: number;
+  results: MovieType[];
+};
+
+export async function Genre() {
+  const getUpComingMovies = async () => {
+    const res = await fetch(
+      "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${process.env.TMDB_ACCESS_KEY}`,
+        },
+      }
+    );
+    const data = await res.json();
+    return data;
+  };
+  const upComingMovies: movieResponseType = await getUpComingMovies();
   return (
     <div className="px-20 pt-13">
       <h3 className="text-[30px] font-bold">Search Filter</h3>
@@ -54,59 +165,20 @@ const Genre = () => {
         <div className="pl-10 flex flex-col">
           <h3 className="text-[30px] font-bold">81 titles in “Animation”</h3>
 
-          <div className="flex-wrap flex gap-8 pt-8">
-            <MovieCard
-              title="Dear Santa"
-              score={6.9}
-              image="/images/dearsanta.jpg"
-            />
-            <MovieCard
-              title="How To Train Your Dragon Live Action"
-              score={6.9}
-              image="/images/dragon3d.jpg"
-            />
-            <MovieCard
-              title="Alien Romulus"
-              score={6.9}
-              image="/images/alienromulus.jpg"
-            />
-            <MovieCard
-              title="From the Ashes"
-              score={6.9}
-              image="/images/ashes.jpg"
-            />
-            <MovieCard
-              title="From the Space Dogg"
-              score={6.9}
-              image="/images/spacedogg.jpg"
-            />
-            <MovieCard
-              title="The Order"
-              score={6.9}
-              image="/images/theorder.jpg"
-            />
-            <MovieCard title="Y2K" score={6.9} image="/images/y2k.jpg" />
-
-            <MovieCard
-              title="Solo Leveling: ReAwakening"
-              score={6.9}
-              image="/images/sololeveling.jpg"
-            />
-            <MovieCard
-              title="Get Away"
-              score={6.9}
-              image="/images/getaway.jpg"
-            />
-            <MovieCard
-              title="Sonic the Hedgehog 3"
-              score={6.9}
-              image="/images/sonic.png"
-            />
+          <div className="flex gap-8 flex-wrap pt-8">
+            {upComingMovies.results.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                title={movie.title}
+                score={movie.vote_average}
+                image={movie.poster_path}
+              />
+            ))}
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Genre;
