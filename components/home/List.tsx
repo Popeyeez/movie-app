@@ -5,7 +5,7 @@ type props = {
 };
 export const List = ({ title }: props) => {
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className="flex items-center justify-between w-full mt-5">
       <span className="text-[24px] font-bold">{title}</span>
 
       <Button variant="outline" className="flex items-center gap-1">

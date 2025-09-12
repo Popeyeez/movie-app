@@ -2,6 +2,8 @@ import { MovieCard } from "@/components/home";
 import { GoChevronRight } from "react-icons/go";
 
 import React from "react";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 const GENRES = [
   {
     id: 28,
@@ -124,42 +126,15 @@ export async function Genre() {
           <span className="text-[16px] font-normal">
             See lists of movies by genre
           </span>
-          <div className="flex flex-wrap gap-2 items-center pt-5">
-            Action
-            <GoChevronRight />
-            Adventure
-            <GoChevronRight />
-            Animation
-            <GoChevronRight />
-            Biography
-            <GoChevronRight />
-            Comedy
-            <GoChevronRight />
-            Crime
-            <GoChevronRight />
-            Documentary
-            <GoChevronRight />
-            Family
-            <GoChevronRight />
-            Fantasy
-            <GoChevronRight />
-            Film-Noir
-            <GoChevronRight />
-            <GoChevronRight />
-            Game-Show
-            <GoChevronRight />
-            History
-            <GoChevronRight />
-            Horror
-            <GoChevronRight />
-            Musical
-            <GoChevronRight />
-            Mystery
-            <GoChevronRight />
-            News
-            <GoChevronRight />
-            Reality-TV
-            <GoChevronRight />
+          <div className="flex flex-wrap gap-2 items-center pt-5 text-4xl">
+            {GENRES.map((genre) => (
+              <Link href="/genre" key={genre.id}>
+                <Badge variant="outline">
+                  {genre.name}
+                  <GoChevronRight />
+                </Badge>
+              </Link>
+            ))}
           </div>
         </div>
         <div className="pl-10 flex flex-col">
