@@ -41,7 +41,7 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
     <>
       <Carousel setApi={setApi} className="w-screen">
         <CarouselContent>
-          {movies.slice(0, 3).map((movie, index) => (
+          {movies.map((movie, index) => (
             <CarouselItem key={index}>
               <div className="p-1">
                 <Card>
@@ -79,19 +79,17 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
         <CarouselNext className="right-13" />
       </Carousel>
       <div className="flex gap-2 justify-center position: absolute w-full">
-        {Array.from({ length: count })
-          .slice(0, 3)
-          .map((_, index) => (
-            <div
-              onClick={() => {
-                api?.scrollTo(index);
-              }}
-              key={index}
-              className={`rounded-full size-4 -mt-15 position: relative flex justify-center ${
-                index + 1 === current ? "bg-white" : "bg-gray-600"
-              }`}
-            ></div>
-          ))}
+        {Array.from({ length: count }).map((_, index) => (
+          <div
+            onClick={() => {
+              api?.scrollTo(index);
+            }}
+            key={index}
+            className={`rounded-full size-4 -mt-15 position: relative flex justify-center ${
+              index + 1 === current ? "bg-white" : "bg-gray-600"
+            }`}
+          ></div>
+        ))}
       </div>
     </>
   );
