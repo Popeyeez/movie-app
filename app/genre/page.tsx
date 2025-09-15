@@ -1,125 +1,31 @@
 import { MovieCard } from "@/components/home";
 import { GoChevronRight } from "react-icons/go";
+import { GenreResponseType, movieResponseType } from "@/types";
 
 import React from "react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-const GENRES = [
-  {
-    id: 28,
-    name: "Action",
-  },
-  {
-    id: 12,
-    name: "Adventure",
-  },
-  {
-    id: 16,
-    name: "Animation",
-  },
-  {
-    id: 35,
-    name: "Comedy",
-  },
-  {
-    id: 80,
-    name: "Crime",
-  },
-  {
-    id: 99,
-    name: "Documentary",
-  },
-  {
-    id: 18,
-    name: "Drama",
-  },
-  {
-    id: 10751,
-    name: "Family",
-  },
-  {
-    id: 14,
-    name: "Fantasy",
-  },
-  {
-    id: 36,
-    name: "History",
-  },
-  {
-    id: 27,
-    name: "Horror",
-  },
-  {
-    id: 10402,
-    name: "Music",
-  },
-  {
-    id: 9648,
-    name: "Mystery",
-  },
-  {
-    id: 10749,
-    name: "Romance",
-  },
-  {
-    id: 878,
-    name: "Science Fiction",
-  },
-  {
-    id: 10770,
-    name: "TV Movie",
-  },
-  {
-    id: 53,
-    name: "Thriller",
-  },
-  {
-    id: 10752,
-    name: "War",
-  },
-  {
-    id: 37,
-    name: "Western",
-  },
-];
-type MovieType = {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  overview: string;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  vote_average: number;
+import { getMovieGenres, getMoviesByGenreId } from "@/utils/get-data";
+import { PaginationDemo } from "@/components/home/PaginationDemo";
+type GenrePageProps = {
+  searchParams: Promise<{ id: string; name: string; page: string }>;
 };
+const genresResponse: GenreResponseType = await getMovieGenres();
 
-type movieResponseType = {
-  page: number;
-  totalPages: number;
-  results: MovieType[];
-};
+export const Genre = async ({ searchParams }: GenrePageProps) => {
+  const params = await searchParams;
+  const id = params.id;
+  const name = params.name;
+  const page = params.page || "1";
 
-export async function Genre() {
-  const getUpComingMovies = async () => {
-    const res = await fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${process.env.TMDB_ACCESS_KEY}`,
-        },
-      }
-    );
-    const data = await res.json();
-    return data;
-  };
-  const upComingMovies: movieResponseType = await getUpComingMovies();
+  const filteredMoviesResponse: movieResponseType = await getMoviesByGenreId(
+    id,
+    page
+  );
   return (
     <div className="px-20 pt-13">
       <h3 className="text-[30px] font-bold">Search Filter</h3>
+      {name}
       <div className="flex pt-8">
         <div className="h-[1257px]  flex flex-col gap-2">
           <h3 className="text-[30px] font-bold">Genres</h3>
@@ -127,8 +33,11 @@ export async function Genre() {
             See lists of movies by genre
           </span>
           <div className="flex flex-wrap gap-2 items-center pt-5 text-4xl">
-            {GENRES.map((genre) => (
-              <Link href="/genre" key={genre.id}>
+            {genresResponse.genres.map((genre) => (
+              <Link
+                key={genre.id}
+                href={`/genre?id=${genre.id}&name=${genre.name}`}
+              >
                 <Badge variant="outline">
                   {genre.name}
                   <GoChevronRight />
@@ -138,10 +47,12 @@ export async function Genre() {
           </div>
         </div>
         <div className="pl-10 flex flex-col">
-          <h3 className="text-[30px] font-bold">81 titles in “Animation”</h3>
+          <h3 className="text-[30px] font-bold">
+            {id} titles in {name} {page}
+          </h3>
 
           <div className="flex gap-8 flex-wrap pt-8">
-            {upComingMovies.results.map((movie) => (
+            {filteredMoviesResponse.results.slice(0, 12).map((movie) => (
               <MovieCard
                 key={movie.id}
                 title={movie.title}
@@ -152,8 +63,9 @@ export async function Genre() {
           </div>
         </div>
       </div>
+      <PaginationDemo />
     </div>
   );
-}
+};
 
 export default Genre;

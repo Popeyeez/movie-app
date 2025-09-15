@@ -7,94 +7,14 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-const GENRES = [
-  {
-    id: 28,
-    name: "Action",
-  },
-  {
-    id: 12,
-    name: "Adventure",
-  },
-  {
-    id: 16,
-    name: "Animation",
-  },
-  {
-    id: 35,
-    name: "Comedy",
-  },
-  {
-    id: 80,
-    name: "Crime",
-  },
-  {
-    id: 99,
-    name: "Documentary",
-  },
-  {
-    id: 18,
-    name: "Drama",
-  },
-  {
-    id: 10751,
-    name: "Family",
-  },
-  {
-    id: 14,
-    name: "Fantasy",
-  },
-  {
-    id: 36,
-    name: "History",
-  },
-  {
-    id: 27,
-    name: "Horror",
-  },
-  {
-    id: 10402,
-    name: "Music",
-  },
-  {
-    id: 9648,
-    name: "Mystery",
-  },
-  {
-    id: 10749,
-    name: "Romance",
-  },
-  {
-    id: 878,
-    name: "Science Fiction",
-  },
-  {
-    id: 10770,
-    name: "TV Movie",
-  },
-  {
-    id: 53,
-    name: "Thriller",
-  },
-  {
-    id: 10752,
-    name: "War",
-  },
-  {
-    id: 37,
-    name: "Western",
-  },
-];
-export function DropdownMenuDemo() {
+import { GenreResponseType, GenreType } from "@/types";
+import { getMovieGenres } from "@/utils/get-data";
+
+export async function DropdownMenuDemo() {
+  const genresResponse: GenreResponseType = await getMovieGenres();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -115,8 +35,11 @@ export function DropdownMenuDemo() {
 
         <DropdownMenuGroup>
           <DropdownMenuItem className="hover:!bg-transparent flex flex-wrap text-4xl">
-            {GENRES.map((genre) => (
-              <Link href="/genre" key={genre.id}>
+            {genresResponse.genres.map((genre) => (
+              <Link
+                key={genre.id}
+                href={`/genre?id=${genre.id}&name=${genre.name}`}
+              >
                 <Badge variant="outline">
                   {genre.name}
                   <GoChevronRight />
