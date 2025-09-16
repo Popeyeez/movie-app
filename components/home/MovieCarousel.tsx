@@ -10,10 +10,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { MovieType } from "@/types";
+import { MovieType, VideoResponseType } from "@/types";
 import { FaStar } from "react-icons/fa";
 import { Button } from "../ui/button";
 import { MdOutlinePlayArrow } from "react-icons/md";
+import { getMoviesTrailer } from "@/utils/get-data";
 
 type MovieCarouselProps = {
   movies: MovieType[];

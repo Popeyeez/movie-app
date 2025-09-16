@@ -28,3 +28,36 @@ export type GenreType = {
 export type GenreResponseType = {
   genres: GenreType[];
 };
+export type CastType = {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
+};
+
+export type CrewType = {
+  id: number;
+  name: string;
+  department: string;
+  job: string;
+  gender: number;
+  credit_id: string;
+};
+export type MovieCreditsType = {
+  id: number;
+  cast: CastType[];
+  crew: CrewType[];
+};
+
+export type VideoType = {
+  id: string;
+  key: string;
+  name: string;
+  site: string;
+  type: string;
+};
+
+export type VideoResponseType = {
+  id: number;
+  results: VideoType[];
+};
