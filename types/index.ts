@@ -9,11 +9,15 @@ export type MovieType = {
   release_date: string;
   title: string;
   vote_average: number;
+  vote_count: number;
+  runtime: number;
+  popularity: number;
+  genres: GenreType[];
 };
 
 export type movieResponseType = {
   page: number;
-  totalPages: number;
+  total_pages: number;
   results: MovieType[];
 };
 

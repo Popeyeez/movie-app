@@ -22,6 +22,7 @@ export const Genre = async ({ searchParams }: GenrePageProps) => {
     id,
     page
   );
+
   return (
     <div className="px-20 pt-13">
       <h3 className="text-[30px] font-bold">Search Filter</h3>
@@ -46,7 +47,7 @@ export const Genre = async ({ searchParams }: GenrePageProps) => {
             ))}
           </div>
         </div>
-        <div className="pl-10 flex flex-col">
+        <div className="pl-10 flex flex-col gap-5">
           <h3 className="text-[30px] font-bold">
             {id} titles in {name} {page}
           </h3>
@@ -55,15 +56,21 @@ export const Genre = async ({ searchParams }: GenrePageProps) => {
             {filteredMoviesResponse.results.slice(0, 12).map((movie) => (
               <MovieCard
                 key={movie.id}
+                id={movie.id}
                 title={movie.title}
                 score={movie.vote_average}
                 image={movie.poster_path}
               />
             ))}
           </div>
+          <PaginationDemo
+            id={id}
+            name={name}
+            currentPage={Number(page)}
+            totalPages={filteredMoviesResponse.total_pages}
+          />
         </div>
       </div>
-      <PaginationDemo />
     </div>
   );
 };

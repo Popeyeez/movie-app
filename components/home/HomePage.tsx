@@ -15,7 +15,6 @@ export async function HomePage() {
   return (
     <div>
       <MovieCarousel movies={nowPlayingMovies.results} />
-
       <div className="flex gap-8 flex-wrap px-20 ">
         <List title="Upcoming" />
         <MoviesContainer movies={upComingMovies.results} />
