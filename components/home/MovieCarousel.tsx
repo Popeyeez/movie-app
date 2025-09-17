@@ -10,11 +10,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { MovieType, VideoResponseType } from "@/types";
+import { MovieType } from "@/types";
 import { FaStar } from "react-icons/fa";
 import { Button } from "../ui/button";
 import { MdOutlinePlayArrow } from "react-icons/md";
-import { getMoviesTrailer } from "@/utils/get-data";
+import { TrailerMovie } from "./TrailerMovie";
 
 type MovieCarouselProps = {
   movies: MovieType[];
@@ -32,7 +32,6 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
 
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
-
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
@@ -63,12 +62,11 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
                         <span>{movie.vote_average}/10</span>
                         <FaStar color="#FDE047" />
                       </div>
-                      <span className="w-[300px] mt-4">{movie.overview}</span>
+                      <span className="w-[300px] mt-4 mb-3">
+                        {movie.overview}
+                      </span>
 
-                      <Button className="w-35 mt-3 h-10 bg-white text-black hover:bg-gray-400">
-                        <MdOutlinePlayArrow />
-                        Watch Trailer
-                      </Button>
+                      <TrailerMovie trailerLink="ok" />
                     </div>
                   </CardContent>
                 </Card>

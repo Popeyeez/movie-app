@@ -1,9 +1,9 @@
-import { List, MovieCard } from "@/components/home";
+import { List, MovieCard, MovieCarousel } from "@/components/home";
+import { TrailerMovie } from "@/components/home/TrailerMovie";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
+
 import {
-  CrewType,
   MovieCreditsType,
   movieResponseType,
   MovieType,
@@ -30,11 +30,8 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
   const movieResponse: MovieType = await getMoviesByDetails(id);
   const movieCredits: MovieCreditsType = await getMoviesCredits(id);
   const movieSimilar: movieResponseType = await getMoviesSimilar(id);
-  const directors = movieCredits.crew.filter(
-    (member: CrewType) => member.job === "Director"
-  );
+  const directors = movieCredits.crew;
   const writers = movieCredits.crew;
-
   const stars = movieCredits.cast;
   const movieTrailer: VideoResponseType = await getMoviesTrailer(id);
   const trailerKey = movieTrailer?.results?.[0]?.key;
@@ -45,7 +42,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
   console.log("Movie Details", movieResponse);
 
   return (
-    <div className="px-20">
+    <div className="px-45">
       <div className="flex w-full justify-between items-center">
         <div className="flex flex-col">
           <span className="text-[36px] font-bold">{movieResponse.title}</span>
@@ -65,33 +62,27 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
           </span>
         </div>
       </div>
-
       <div className="flex mt-6 gap-8">
         <Image
-          className="rounded-sm"
           src={`https://image.tmdb.org/t/p/w500/${movieResponse.poster_path}`}
           alt={movieResponse.title}
-          width={290}
+          width={350}
           height={430}
-          style={{ width: "auto" }}
+          className="rounded-sm"
           priority
         />
+
         <CardContent
-          className="aspect-video w-full bg-cover bg-center rounded-sm"
+          className="aspect-video w-[1200px] h-[430px] bg-cover rounded-sm"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original${movieResponse.backdrop_path})`,
           }}
         >
           <div className="flex items-end h-full pb-6">
-            <Button asChild>
-              <a href={`https://www.youtube.com/watch?v=${trailerKey}`}>
-                Play Trailer
-              </a>
-            </Button>
+            <TrailerMovie trailerLink={trailerKey}></TrailerMovie>
           </div>
         </CardContent>
       </div>
-
       <div className="flex gap-5 flex-col">
         <div className="pt-6 flex gap-3">
           {movieResponse.genres.map((genre) => (
@@ -104,15 +95,15 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
         <div className="flex gap-13">
           <span className="text-[16px] font-bold">Director</span>
           <div>
-            {directors.map((d) => (
-              <span key={d.id}>{d.name} </span>
+            {directors.slice(0, 1).map((d) => (
+              <span key={d.credit_id}>{d.name} </span>
             ))}
           </div>
         </div>
         <div className="flex gap-14">
           <span className="text-[16px] font-bold">Writers</span>
           <div>
-            {writers.slice(0, 5).map((w) => (
+            {writers.slice(1, 6).map((w) => (
               <span key={w.credit_id}>{w.name} </span>
             ))}
           </div>
