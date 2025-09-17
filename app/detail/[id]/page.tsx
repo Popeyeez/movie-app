@@ -73,7 +73,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
         />
 
         <CardContent
-          className="aspect-video w-[1200px] h-[430px] bg-cover rounded-sm"
+          className="aspect-video w-[1200px] max-h-[550px] bg-cover rounded-sm"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original${movieResponse.backdrop_path})`,
           }}
