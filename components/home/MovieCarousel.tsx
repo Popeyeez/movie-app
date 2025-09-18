@@ -12,8 +12,6 @@ import {
 } from "@/components/ui/carousel";
 import { MovieType } from "@/types";
 import { FaStar } from "react-icons/fa";
-import { Button } from "../ui/button";
-import { MdOutlinePlayArrow } from "react-icons/md";
 import { TrailerMovie } from "./TrailerMovie";
 
 type MovieCarouselProps = {

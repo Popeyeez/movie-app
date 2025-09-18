@@ -32,7 +32,7 @@ export const MovieCard = ({ title, score, image, id }: MovieCardProps) => {
         <CardFooter className="flex flex-col items-start p-2">
           <CardDescription className="flex gap-2">
             <FaStar color="#FDE047" />
-            <span>{score}/10</span>
+            <span>{Math.floor(score * 10) / 10}/10</span>
           </CardDescription>
           <CardTitle className="text-[18px] font-normal">{title}</CardTitle>
         </CardFooter>

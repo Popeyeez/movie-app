@@ -19,7 +19,7 @@ export function Header() {
       <div className="flex items-center gap-5">
         <DropdownMenuDemo />
 
-        <Search className="-mr-13" />
+        <Search className="-mr-14" />
         <InputDemo />
       </div>
 

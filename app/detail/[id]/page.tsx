@@ -53,7 +53,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
           <div className="flex items-center gap-1">
             <FaStar color="#FDE047" />
             <span className="text-[16px] font-bold">
-              {movieResponse.vote_average}
+              {Math.floor(movieResponse.vote_average * 10) / 10}
             </span>
             /10
           </div>
@@ -79,7 +79,9 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
           }}
         >
           <div className="flex items-end h-full pb-6">
-            <TrailerMovie trailerLink={trailerKey}></TrailerMovie>
+            {trailerKey && (
+              <TrailerMovie trailerLink={trailerKey}></TrailerMovie>
+            )}
           </div>
         </CardContent>
       </div>
