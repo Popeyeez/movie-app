@@ -6,7 +6,7 @@ import React from "react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { getMovieGenres, getMoviesByGenreId } from "@/utils/get-data";
-import { PaginationDemo } from "@/components/home/PaginationDemo";
+import { PaginationGenre } from "@/components/home/PaginationGenre";
 type GenrePageProps = {
   searchParams: Promise<{ id: string; name: string; page: string }>;
 };
@@ -52,7 +52,7 @@ export const Genre = async ({ searchParams }: GenrePageProps) => {
             {id} titles in {name} {page}
           </h3>
 
-          <div className="flex gap-8 flex-wrap pt-8">
+          <div className="flex gap-8 flex-wrap pt-8 pb-5">
             {filteredMoviesResponse.results.slice(0, 12).map((movie) => (
               <MovieCard
                 key={movie.id}
@@ -63,7 +63,8 @@ export const Genre = async ({ searchParams }: GenrePageProps) => {
               />
             ))}
           </div>
-          <PaginationDemo
+
+          <PaginationGenre
             id={id}
             name={name}
             currentPage={Number(page)}

@@ -15,14 +15,14 @@ type PaginationDemoProps = {
   totalPages: number;
 };
 
-export const PaginationDemo = ({
+export const PaginationGenre = ({
   id,
   name,
   currentPage,
   totalPages,
 }: PaginationDemoProps) => {
   const pages = Array.from(
-    { length: Math.min(5, totalPages) },
+    { length: Math.min(7, totalPages) },
     (_, i) => i + 1
   );
 

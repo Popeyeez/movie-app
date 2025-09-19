@@ -1,4 +1,4 @@
-import { List, MovieCard, MovieCarousel } from "@/components/home";
+import { List, MovieCard } from "@/components/home";
 import { TrailerMovie } from "@/components/home/TrailerMovie";
 import { Badge } from "@/components/ui/badge";
 import { CardContent } from "@/components/ui/card";
@@ -29,7 +29,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
   const id = dynamicParams.id;
   const movieResponse: MovieType = await getMoviesByDetails(id);
   const movieCredits: MovieCreditsType = await getMoviesCredits(id);
-  const movieSimilar: movieResponseType = await getMoviesSimilar(id);
+  const movieSimilar: movieResponseType = await getMoviesSimilar(id, 1);
   const directors = movieCredits.crew;
   const writers = movieCredits.crew;
   const stars = movieCredits.cast;
@@ -120,7 +120,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
         </div>
       </div>
       <div className="flex flex-wrap gap-5">
-        <List title="More like this" />
+        <List title="More like this" href={`/detail/${id}/similar`} />
 
         {movieSimilar.results.slice(0, 10).map((movie) => (
           <MovieCard

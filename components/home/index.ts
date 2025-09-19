@@ -8,6 +8,6 @@ export * from "./List";
 export * from "./Footer";
 export * from "./MoviesContainer";
 export * from "./MovieCarousel";
-export * from "./PaginationDemo";
+export * from "./PaginationGenre";
 export * from "./HomePage";
 export * from "./HomePageSkeleton";
