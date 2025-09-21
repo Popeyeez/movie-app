@@ -8,7 +8,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-type PaginationDemoProps = {
+type PaginationSimilarProps = {
   id: string;
   name: string;
   currentPage: number;
@@ -19,7 +19,7 @@ export const PaginationSimilar = ({
   id,
   currentPage,
   totalPages,
-}: PaginationDemoProps) => {
+}: PaginationSimilarProps) => {
   const pages = Array.from(
     { length: Math.min(7, totalPages) },
     (_, i) => i + 1

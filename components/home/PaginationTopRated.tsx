@@ -8,15 +8,15 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-type PaginationUpcomingProps = {
+type PaginationTopRatedProps = {
   currentPage: number;
   totalPages: number;
 };
 
-export const PaginationUpcoming = ({
+export const PaginationTopRated = ({
   currentPage,
   totalPages,
-}: PaginationUpcomingProps) => {
+}: PaginationTopRatedProps) => {
   const pages = Array.from(
     { length: Math.min(7, totalPages) },
     (_, i) => i + 1
@@ -27,14 +27,14 @@ export const PaginationUpcoming = ({
       <PaginationContent>
         <PaginationItem>
           {currentPage > 1 && (
-            <PaginationPrevious href={`/upcoming?page=${currentPage - 1}`} />
+            <PaginationPrevious href={`/top_rated?page=${currentPage - 1}`} />
           )}
         </PaginationItem>
 
         {pages.map((p) => (
           <PaginationItem key={p}>
             <PaginationLink
-              href={`/upcoming?page=${p}`}
+              href={`/top_rated?page=${p}`}
               isActive={p === currentPage}
             >
               {p}
@@ -46,7 +46,7 @@ export const PaginationUpcoming = ({
 
         <PaginationItem>
           {currentPage < totalPages && (
-            <PaginationNext href={`/upcoming?page=${currentPage + 1}`} />
+            <PaginationNext href={`/top_rated?page=${currentPage + 1}`} />
           )}
         </PaginationItem>
       </PaginationContent>

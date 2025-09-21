@@ -8,7 +8,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-type PaginationDemoProps = {
+type PaginationGenreProps = {
   id: string;
   name: string;
   currentPage: number;
@@ -20,7 +20,7 @@ export const PaginationGenre = ({
   name,
   currentPage,
   totalPages,
-}: PaginationDemoProps) => {
+}: PaginationGenreProps) => {
   const pages = Array.from(
     { length: Math.min(7, totalPages) },
     (_, i) => i + 1

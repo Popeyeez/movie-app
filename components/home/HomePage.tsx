@@ -5,11 +5,12 @@ import { MoviesContainer } from "./MoviesContainer";
 import { List } from "./List";
 
 export const HomePage = async () => {
-  const upComingMovies: movieResponseType = await getMoviesList("upcoming");
-  const popularMovies: movieResponseType = await getMoviesList("popular");
-  const topRatedMovies: movieResponseType = await getMoviesList("top_rated");
+  const upComingMovies: movieResponseType = await getMoviesList("upcoming", 1);
+  const popularMovies: movieResponseType = await getMoviesList("popular", 1);
+  const topRatedMovies: movieResponseType = await getMoviesList("top_rated", 1);
   const nowPlayingMovies: movieResponseType = await getMoviesList(
-    "now_playing"
+    "now_playing",
+    1
   );
 
   return (
@@ -20,7 +21,7 @@ export const HomePage = async () => {
         <MoviesContainer movies={upComingMovies.results} />
         <List title="Popular" href="/popular" />
         <MoviesContainer movies={popularMovies.results} />
-        <List title="Top Rated" href="/top-rated" />
+        <List title="Top Rated" href="/top_rated" />
         <MoviesContainer movies={topRatedMovies.results} />
       </div>
     </div>
