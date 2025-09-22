@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { FiFilm } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
@@ -9,9 +10,11 @@ export const Footer = () => {
       <div className="text-white flex flex-col gap-2">
         <div className="flex items-center gap-2 ">
           <FiFilm color="white" />
-          <span className="text-white text-[16px] font-bold italic flex">
-            Movie Z
-          </span>
+          <Link href="/">
+            <span className="text-white text-[16px] font-bold italic flex">
+              Movie Z
+            </span>
+          </Link>
         </div>
         © 2024 Movie Z. All Rights Reserved
       </div>
@@ -35,7 +38,10 @@ export const Footer = () => {
       <div className="text-white flex flex-col gap-2">
         Follow us
         <div className="flex items-center gap-2 ">
-          Facebook Instagram Twitter Youtube
+          <Link href="https://www.facebook.com">Facebook </Link>
+          <Link href="https://www.instagram.com">Instagram </Link>
+          <Link href="https://www.twitter.com">Twitter </Link>
+          <Link href="https://www.youtube.com">Youtube </Link>
         </div>
       </div>
     </div>
