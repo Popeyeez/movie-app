@@ -83,7 +83,7 @@ const MovieCarouselItem = ({ movie }: { movie: MovieType }) => {
       <div className="p-1">
         <Card>
           <CardContent
-            className="aspect-video max-h-[600px] p-6 bg-cover  rounded-xl"
+            className="aspect-video  max-h-[800px] p-6 bg-cover rounded-xl"
             style={{
               backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
             }}

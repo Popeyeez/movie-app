@@ -66,14 +66,14 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
         <Image
           src={`https://image.tmdb.org/t/p/w500/${movieResponse.poster_path}`}
           alt={movieResponse.title}
-          width={350}
-          height={430}
+          width={450}
+          height={550}
           className="rounded-sm"
           priority
         />
 
         <CardContent
-          className="aspect-video w-[1200px] max-h-[550px] bg-cover rounded-sm"
+          className="aspect-video w-full max-h-[550px] bg-cover rounded-sm"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original${movieResponse.backdrop_path})`,
           }}
@@ -119,10 +119,10 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap gap-5">
+      <div className="flex flex-wrap gap-8">
         <List title="More like this" href={`/detail/${id}/similar`} />
 
-        {movieSimilar.results.slice(0, 10).map((movie) => (
+        {movieSimilar.results.slice(0, 14).map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}
