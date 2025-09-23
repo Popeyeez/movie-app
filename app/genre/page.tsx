@@ -49,7 +49,7 @@ export const Genre = async ({ searchParams }: GenrePageProps) => {
         </div>
         <div className="pl-10 flex flex-col gap-5">
           <h3 className="text-[30px] font-bold">
-            {id} titles in {name} {page}
+            {filteredMoviesResponse.total_results} titles in {name}
           </h3>
 
           <div className="flex gap-8 flex-wrap pt-8 pb-5">

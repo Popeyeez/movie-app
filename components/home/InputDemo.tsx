@@ -32,7 +32,7 @@ export const InputDemo = () => {
     setFoundMovies(foundData);
   };
   return (
-    <div>
+    <div className="flex items-center ">
       <Input
         value={searchValue}
         onChange={handleChange}
@@ -46,7 +46,8 @@ export const InputDemo = () => {
           <PopoverContent
             onOpenAutoFocus={(e) => e.preventDefault()}
             onCloseAutoFocus={(e) => e.preventDefault()}
-            className="w-80 flex flex-col gap-3"
+            className="w-80 flex flex-col gap-3 -ml-83 mt-6"
+            onMouseLeave={() => setIsOpen(false)}
           >
             {foundMovies?.results.slice(0, 5).map((movie) => {
               return (
@@ -66,10 +67,10 @@ export const InputDemo = () => {
             })}
             <Link
               className="flex justify-center mt-3"
-              href={`/searchvalue=${searchValue}`}
+              href={`/search?value=${searchValue}`}
             >
               <Badge className="text-[14px]">
-                See all results for "{searchValue}"
+                See all results for "{searchValue.toUpperCase()}"
               </Badge>
             </Link>
           </PopoverContent>

@@ -66,7 +66,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
         <Image
           src={`https://image.tmdb.org/t/p/w500/${movieResponse.poster_path}`}
           alt={movieResponse.title}
-          width={450}
+          width={350}
           height={550}
           className="rounded-sm"
           priority

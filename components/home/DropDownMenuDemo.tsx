@@ -23,7 +23,7 @@ export async function DropdownMenuDemo() {
           Genre
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[577px] h-[333px] flex flex-col px-5">
+      <DropdownMenuContent className="w-[577px] h-[333px] flex flex-col px-5 ml-60 mt-3">
         <div className="py-3">
           <DropdownMenuLabel className="flex flex-col gap-2">
             <span className="text-[24px] font-bold ">Genres</span>
