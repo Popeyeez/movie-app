@@ -41,7 +41,7 @@ export const InputDemo = () => {
       />
       <div>
         <Popover open={isOpen}>
-          <PopoverTrigger className="hidden"></PopoverTrigger>
+          <PopoverTrigger className=""></PopoverTrigger>
 
           <PopoverContent
             onOpenAutoFocus={(e) => e.preventDefault()}
