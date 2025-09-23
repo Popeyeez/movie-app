@@ -19,7 +19,7 @@ export const InputDemo = () => {
   const [foundMovies, setFoundMovies] = useState<movieResponseType | null>(
     null
   );
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setSearchValue(value);

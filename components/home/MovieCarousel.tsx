@@ -48,15 +48,17 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
       </Carousel>
 
       <div className="flex gap-2 justify-center absolute w-full">
-        {Array.from({ length: count }).map((_, index) => (
-          <div
-            key={index}
-            onClick={() => api?.scrollTo(index)}
-            className={`rounded-full size-4 -mt-15 position: relative flex justify-center ${
-              index + 1 === current ? "bg-white" : "bg-gray-600"
-            }`}
-          ></div>
-        ))}
+        {Array.from({ length: count })
+          .slice(0, 5)
+          .map((_, index) => (
+            <div
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              className={`rounded-full size-4 -mt-15 position: relative flex justify-center ${
+                index + 1 === current ? "bg-white" : "bg-gray-600"
+              }`}
+            ></div>
+          ))}
       </div>
     </>
   );

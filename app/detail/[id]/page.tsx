@@ -122,7 +122,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
       <div className="flex flex-wrap gap-8">
         <List title="More like this" href={`/detail/${id}/similar`} />
 
-        {movieSimilar.results.slice(0, 14).map((movie) => (
+        {movieSimilar.results.slice(0, 10).map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}
