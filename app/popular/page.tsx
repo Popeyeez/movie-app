@@ -4,7 +4,7 @@ import { MovieCard } from "@/components/home";
 import { PaginationPopular } from "@/components/home/PaginationPopular";
 
 type PopularPageProps = {
-  searchParams: { page?: string };
+  searchParams: { page: string };
 };
 
 const Popular = async ({ searchParams }: PopularPageProps) => {
@@ -12,9 +12,9 @@ const Popular = async ({ searchParams }: PopularPageProps) => {
   const popularMovies: movieResponseType = await getMoviesList("popular", page);
 
   return (
-    <div className="px-20 py-6">
+    <div className="sm:px-20 py-6 px-19">
       <h1 className="text-2xl font-bold mb-6">Popular</h1>
-      <div className="flex flex-wrap gap-5 mb-10">
+      <div className="flex flex-wrap gap-5 mb-10 justify-center sm:justify-start">
         {popularMovies.results.map((movie) => (
           <MovieCard
             key={movie.id}

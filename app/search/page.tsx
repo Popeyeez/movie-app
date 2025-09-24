@@ -4,9 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getSearchedMovies } from "@/utils/get-data";
 import { movieResponseType } from "@/types";
-import Link from "next/link";
-import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
+import { MovieCard } from "@/components/home";
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
@@ -22,29 +20,19 @@ export default function SearchPage() {
   }, [value]);
 
   return (
-    <div className="p-5">
-      <h1 className="text-xl mb-4">
-        Search results for "{value.toUpperCase()}"
-      </h1>
-      <div className="flex flex-col gap-3">
+    <div className="px-20 pt-13">
+      <h3 className="text-[30px] font-bold">Search results</h3>
+      {foundMovies?.results.length} results for "{value}"
+      <div className="flex sm:gap-10 flex-wrap pt-3 gap-3 justify-center sm:justify-start">
         {foundMovies?.results.map((movie) => (
-          <Link
+          <MovieCard
             key={movie.id}
-            href={`/detail/${movie.id}`}
-            className="flex items-center gap-3"
-          >
-            <Image
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-              alt={movie.title}
-              width={50}
-              height={50}
-            />
-            <span>{movie.title}</span>
-          </Link>
+            id={movie.id}
+            title={movie.title}
+            score={movie.vote_average}
+            image={movie.poster_path}
+          />
         ))}
-        {foundMovies && foundMovies.results.length === 0 && (
-          <p>No results found.</p>
-        )}
       </div>
     </div>
   );

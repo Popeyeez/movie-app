@@ -28,7 +28,7 @@ export const Genre = async ({ searchParams }: GenrePageProps) => {
       <h3 className="text-[30px] font-bold">Search Filter</h3>
       {name}
       <div className="flex pt-8">
-        <div className="h-[1257px]  flex flex-col gap-2">
+        <div className="h-[1257px] flex flex-col gap-2">
           <h3 className="text-[30px] font-bold">Genres</h3>
           <span className="text-[16px] font-normal">
             See lists of movies by genre

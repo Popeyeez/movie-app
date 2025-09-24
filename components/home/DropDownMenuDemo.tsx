@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { GenreResponseType, GenreType } from "@/types";
+import { GenreResponseType } from "@/types";
 import { getMovieGenres } from "@/utils/get-data";
 
 export async function DropdownMenuDemo() {
@@ -23,7 +23,7 @@ export async function DropdownMenuDemo() {
           Genre
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[577px] h-[333px] flex flex-col px-5 ml-60 mt-3">
+      <DropdownMenuContent className="sm:w-[577px] 2xl:h-[333px] flex flex-col px-5 sm:ml-60 mt-3 w-150 ml-6">
         <div className="py-3">
           <DropdownMenuLabel className="flex flex-col gap-2">
             <span className="text-[24px] font-bold ">Genres</span>

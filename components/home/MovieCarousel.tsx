@@ -39,7 +39,7 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
     <>
       <Carousel setApi={setApi} className="w-screen">
         <CarouselContent>
-          {movies.map((movie, index) => (
+          {movies.slice(0, 3).map((movie, index) => (
             <MovieCarouselItem key={index} movie={movie} />
           ))}
         </CarouselContent>
@@ -49,7 +49,7 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
 
       <div className="flex gap-2 justify-center absolute w-full">
         {Array.from({ length: count })
-          .slice(0, 5)
+          .slice(0, 3)
           .map((_, index) => (
             <div
               key={index}
@@ -85,21 +85,22 @@ const MovieCarouselItem = ({ movie }: { movie: MovieType }) => {
       <div className="p-1">
         <Card>
           <CardContent
-            className="aspect-video  max-h-[800px] p-6 bg-cover rounded-xl"
+            className="aspect-video  sm:max-h-[600px] p-6 bg-cover bg-center rounded-xl h-150"
             style={{
               backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
             }}
           >
             <div className="flex flex-col justify-center gap-2 h-full ml-35 text-white">
               <span className="font-normal text-[25px]">Now Playing:</span>
-              <span className="text-4xl font-semibold text-white">
+              <span className="2xl:text-4xl 2xl:font-semibold text-white sm:text-2xl sm:font-normal">
                 {movie.title}
               </span>
               <div className="flex items-center gap-3 text-2xl">
-                <span>{movie.vote_average}/10</span>
+                <span>{Math.floor(movie.vote_average * 10) / 10}/10</span>
+
                 <FaStar color="#FDE047" />
               </div>
-              <span className="w-[300px] mt-4 mb-3">{movie.overview}</span>
+              <span className="w-100 sm:w-75 mt-4 mb-3 ">{movie.overview}</span>
 
               <TrailerMovie trailerLink={trailerKey} />
             </div>

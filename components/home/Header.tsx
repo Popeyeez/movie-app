@@ -10,7 +10,7 @@ export function Header() {
         <FiFilm color="#4338CA" />
 
         <Link href="/">
-          <span className="text-indigo-700 text-[16px] font-bold italic flex">
+          <span className="text-indigo-700 sm:text-[16px] text-[11px] font-bold italic flex">
             Movie Z
           </span>
         </Link>

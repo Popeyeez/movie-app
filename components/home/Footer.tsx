@@ -6,19 +6,19 @@ import { MdOutlinePhone } from "react-icons/md";
 
 export const Footer = () => {
   return (
-    <div className="bg-indigo-700  h-[280px] mt-15 flex px-20 py-10 justify-between">
+    <div className="bg-indigo-700  h-[280px] mt-15 flex px-20 py-10 2xl:justify-between ">
       <div className="text-white flex flex-col gap-2">
         <div className="flex items-center gap-2 ">
           <FiFilm color="white" />
           <Link href="/">
-            <span className="text-white text-[16px] font-bold italic flex">
+            <span className="text-white sm:text-[16px] text-[11px] font-bold italic flex">
               Movie Z
             </span>
           </Link>
         </div>
         © 2024 Movie Z. All Rights Reserved
       </div>
-      <div className="pl-30 text-white flex flex-col gap-3">
+      <div className="pl-30 text-white flex flex-col gap-3 pr-10 sm:pr-0">
         Contact Information
         <div className="flex items-center gap-3">
           <HiOutlineMail className="w-[25px] h-[25px]" />
@@ -35,9 +35,9 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-white flex flex-col gap-2">
+      <div className="text-white flex flex-col gap-2 ml-5">
         Follow us
-        <div className="flex items-center gap-2 ">
+        <div className="flex items-center gap-2 sm:flex-row flex-col">
           <Link href="https://www.facebook.com">Facebook </Link>
           <Link href="https://www.instagram.com">Instagram </Link>
           <Link href="https://www.twitter.com">Twitter </Link>

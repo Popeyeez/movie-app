@@ -15,9 +15,9 @@ const SimilarPage = async ({ params, searchParams }: SimilarPageProps) => {
   const similarMovies: movieResponseType = await getMoviesSimilar(id, page);
 
   return (
-    <div className="px-20 py-6">
+    <div className="sm:px-20 py-6 px-19">
       <h1 className="text-2xl font-bold mb-6">More like this</h1>
-      <div className="flex flex-wrap gap-5 mb-10">
+      <div className="flex flex-wrap gap-5 mb-10 justify-center sm:justify-start">
         {similarMovies.results.map((movie) => (
           <MovieCard
             key={movie.id}

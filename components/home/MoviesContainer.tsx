@@ -7,7 +7,7 @@ type MoviesContainerProps = {
 
 export const MoviesContainer = ({ movies }: MoviesContainerProps) => {
   return (
-    <div className="flex gap-8 flex-wrap ">
+    <div className="flex gap-12 sm:gap-8 flex-wrap ">
       {movies.slice(0, 10).map((movie) => (
         <MovieCard
           key={movie.id}
