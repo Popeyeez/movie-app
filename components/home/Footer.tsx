@@ -6,7 +6,7 @@ import { MdOutlinePhone } from "react-icons/md";
 
 export const Footer = () => {
   return (
-    <div className="bg-indigo-700  h-[280px] mt-15 flex px-20 py-10 2xl:justify-between ">
+    <div className="bg-indigo-700  h-[280px] mt-15 flex px-20 py-10 sm:justify-between ">
       <div className="text-white flex flex-col gap-2">
         <div className="flex items-center gap-2 ">
           <FiFilm color="white" />

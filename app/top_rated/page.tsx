@@ -15,24 +15,26 @@ const TopRated = async ({ searchParams }: TopRatedPageProps) => {
   );
 
   return (
-    <div className="sm:px-20 py-6 px-19">
-      <h1 className="text-2xl font-bold mb-6">Top Rated</h1>
-      <div className="flex flex-wrap gap-5 mb-10 justify-center sm:justify-start">
-        {topRatedMovies.results.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            score={movie.vote_average}
-            image={movie.poster_path}
-          />
-        ))}
-      </div>
+    <div className="sm:flex sm:justify-center">
+      <div className="py-6 px-19 sm:w-360">
+        <h1 className="text-2xl font-bold mb-6">Top Rated</h1>
+        <div className="flex flex-wrap gap-8 mb-10 justify-center">
+          {topRatedMovies.results.slice(0, 10).map((movie) => (
+            <MovieCard
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              score={movie.vote_average}
+              image={movie.poster_path}
+            />
+          ))}
+        </div>
 
-      <PaginationTopRated
-        currentPage={page}
-        totalPages={topRatedMovies.total_pages}
-      />
+        <PaginationTopRated
+          currentPage={page}
+          totalPages={topRatedMovies.total_pages}
+        />
+      </div>
     </div>
   );
 };

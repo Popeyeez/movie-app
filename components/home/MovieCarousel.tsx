@@ -37,7 +37,7 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
 
   return (
     <>
-      <Carousel setApi={setApi} className="w-screen">
+      <Carousel setApi={setApi} className="w-full">
         <CarouselContent>
           {movies.slice(0, 3).map((movie, index) => (
             <MovieCarouselItem key={index} movie={movie} />

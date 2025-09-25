@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { getMovieGenres, getMoviesByGenreId } from "@/utils/get-data";
 import { PaginationGenre } from "@/components/home/PaginationGenre";
+import { GenreSidebar } from "@/components/home/GenreSideBar";
 type GenrePageProps = {
   searchParams: Promise<{ id: string; name: string; page: string }>;
 };
@@ -24,53 +25,51 @@ export const Genre = async ({ searchParams }: GenrePageProps) => {
   );
 
   return (
-    <div className="px-20 pt-13">
-      <h3 className="text-[30px] font-bold">Search Filter</h3>
-      {name}
-      <div className="flex pt-8">
-        <div className="h-[1257px] flex flex-col gap-2">
-          <h3 className="text-[30px] font-bold">Genres</h3>
-          <span className="text-[16px] font-normal">
-            See lists of movies by genre
-          </span>
-          <div className="flex flex-wrap gap-2 items-center pt-5 text-4xl">
-            {genresResponse.genres.map((genre) => (
-              <Link
-                key={genre.id}
-                href={`/genre?id=${genre.id}&name=${genre.name}`}
-              >
-                <Badge variant="outline">
-                  {genre.name}
-                  <GoChevronRight />
-                </Badge>
-              </Link>
-            ))}
-          </div>
+    <div className="pt-13 px-20 sm:flex">
+      <div className="sm:h-[1257px] flex flex-col gap-2">
+        <h3 className="text-[30px] font-bold">Search Filter</h3>
+        {name}
+        <h3 className="text-[30px] font-bold">Genres</h3>
+        <span className="text-[16px] font-normal">
+          See lists of movies by genre
+        </span>
+        <div className="flex flex-wrap gap-2 items-center pt-5 text-4xl">
+          {genresResponse.genres.map((genre) => (
+            <Link
+              key={genre.id}
+              href={`/genre?id=${genre.id}&name=${genre.name}`}
+            >
+              <Badge variant="outline">
+                {genre.name}
+                <GoChevronRight />
+              </Badge>
+            </Link>
+          ))}
         </div>
-        <div className="pl-10 flex flex-col gap-5">
-          <h3 className="text-[30px] font-bold">
-            {filteredMoviesResponse.total_results} titles in {name}
-          </h3>
+      </div>
+      <div className="sm:pl-10 flex flex-col gap-5 pt-10 sm:pt-0">
+        <h3 className="text-[30px] font-bold">
+          {filteredMoviesResponse.total_results} titles in {name}
+        </h3>
 
-          <div className="flex gap-8 flex-wrap pt-8 pb-5">
-            {filteredMoviesResponse.results.slice(0, 12).map((movie) => (
-              <MovieCard
-                key={movie.id}
-                id={movie.id}
-                title={movie.title}
-                score={movie.vote_average}
-                image={movie.poster_path}
-              />
-            ))}
-          </div>
-
-          <PaginationGenre
-            id={id}
-            name={name}
-            currentPage={Number(page)}
-            totalPages={filteredMoviesResponse.total_pages}
-          />
+        <div className="flex sm:gap-8 flex-wrap pt-5 pb-5 gap-3">
+          {filteredMoviesResponse.results.slice(0, 12).map((movie) => (
+            <MovieCard
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              score={movie.vote_average}
+              image={movie.poster_path}
+            />
+          ))}
         </div>
+
+        <PaginationGenre
+          id={id}
+          name={name}
+          currentPage={Number(page)}
+          totalPages={filteredMoviesResponse.total_pages}
+        />
       </div>
     </div>
   );

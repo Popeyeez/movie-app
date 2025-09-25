@@ -42,7 +42,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
   console.log("Movie Details", movieResponse);
 
   return (
-    <div className="px-45">
+    <div className="sm:px-45 px-20">
       <div className="flex w-full justify-between items-center">
         <div className="flex flex-col">
           <span className="text-[36px] font-bold">{movieResponse.title}</span>
@@ -62,16 +62,17 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
           </span>
         </div>
       </div>
-      <div className="flex mt-6 gap-8">
-        <Image
-          src={`https://image.tmdb.org/t/p/w500/${movieResponse.poster_path}`}
-          alt={movieResponse.title}
-          width={380}
-          height={550}
-          className="rounded-sm"
-          priority
-        />
-
+      <div className="sm:flex mt-6 gap-8">
+        <div className="flex justify-center">
+          <Image
+            src={`https://image.tmdb.org/t/p/w500/${movieResponse.poster_path}`}
+            alt={movieResponse.title}
+            width={380}
+            height={550}
+            className="rounded-sm"
+            priority
+          />
+        </div>
         <CardContent
           className="aspect-video w-full max-h-[550px] bg-cover rounded-sm"
           style={{
@@ -119,7 +120,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap gap-8">
+      <div className="flex flex-wrap sm:gap-8 gap-3">
         <List title="More like this" href={`/detail/${id}/similar`} />
 
         {movieSimilar.results.slice(0, 10).map((movie) => (

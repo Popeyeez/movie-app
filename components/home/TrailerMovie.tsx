@@ -25,7 +25,7 @@ export const TrailerMovie = ({ trailerLink }: TrailerMovieProps) => {
             <DialogTitle></DialogTitle>
             <DialogDescription>
               <iframe
-                className="w-full h-150"
+                className="w-full sm:h-120 h-70"
                 src={`https://www.youtube-nocookie.com/embed/${trailerLink}`}
               ></iframe>
             </DialogDescription>

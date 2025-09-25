@@ -12,24 +12,26 @@ const Popular = async ({ searchParams }: PopularPageProps) => {
   const popularMovies: movieResponseType = await getMoviesList("popular", page);
 
   return (
-    <div className="sm:px-20 py-6 px-19">
-      <h1 className="text-2xl font-bold mb-6">Popular</h1>
-      <div className="flex flex-wrap gap-5 mb-10 justify-center sm:justify-start">
-        {popularMovies.results.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            score={movie.vote_average}
-            image={movie.poster_path}
-          />
-        ))}
-      </div>
+    <div className="sm:flex sm:justify-center">
+      <div className="sm:px-20 py-6 px-19 sm:w-360">
+        <h1 className="text-2xl font-bold mb-6">Popular</h1>
+        <div className="flex flex-wrap gap-8 mb-10 justify-center">
+          {popularMovies.results.slice(0, 10).map((movie) => (
+            <MovieCard
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              score={movie.vote_average}
+              image={movie.poster_path}
+            />
+          ))}
+        </div>
 
-      <PaginationPopular
-        currentPage={page}
-        totalPages={popularMovies.total_pages}
-      />
+        <PaginationPopular
+          currentPage={page}
+          totalPages={popularMovies.total_pages}
+        />
+      </div>
     </div>
   );
 };

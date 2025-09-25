@@ -16,13 +16,15 @@ export const HomePage = async () => {
   return (
     <div>
       <MovieCarousel movies={nowPlayingMovies.results} />
-      <div className="flex gap-8 flex-wrap sm:px-22 px-16">
-        <List title="Upcoming" href="/upcoming" />
-        <MoviesContainer movies={upComingMovies.results} />
-        <List title="Popular" href="/popular" />
-        <MoviesContainer movies={popularMovies.results} />
-        <List title="Top Rated" href="/top_rated" />
-        <MoviesContainer movies={topRatedMovies.results} />
+      <div className="sm:flex sm:justify-center">
+        <div className="flex gap-8 sm:px-20 px-16 flex-wrap sm:w-360">
+          <List title="Upcoming" href="/upcoming" />
+          <MoviesContainer movies={upComingMovies.results} />
+          <List title="Popular" href="/popular" />
+          <MoviesContainer movies={popularMovies.results} />
+          <List title="Top Rated" href="/top_rated" />
+          <MoviesContainer movies={topRatedMovies.results} />
+        </div>
       </div>
     </div>
   );
