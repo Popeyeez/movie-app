@@ -67,34 +67,33 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
 const MovieCarouselItem = ({ movie }: { movie: MovieType }) => {
   const [trailerKey, setTrailerKey] = React.useState("");
 
-  const getTrailerData = async () => {
-    const trailerData: VideoResponseType = await getMoviesTrailer(
-      movie.id.toString()
-    );
-
-    const trailer = trailerData.results.find((item) => item.type === "Trailer");
-    setTrailerKey(trailer?.key || "");
-  };
-
   React.useEffect(() => {
-    getTrailerData();
-  }, []);
+    const getTrailerData = async () => {
+      const trailerData: VideoResponseType = await getMoviesTrailer(
+        movie.id.toString()
+      );
 
+      const trailer = trailerData.results.find(
+        (item) => item.type === "Trailer"
+      );
+      setTrailerKey(trailer?.key || "");
+    };
+
+    getTrailerData();
+  }, [movie.id]);
   return (
     <CarouselItem>
       <div className="p-1">
         <Card>
           <CardContent
-            className="aspect-video  max-h-[800px] p-6 bg-cover rounded-xl"
+            className="aspect-video max-h-[800px] p-6 bg-cover rounded-xl"
             style={{
               backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
             }}
           >
             <div className="flex flex-col justify-center gap-2 h-full ml-35 text-white">
               <span className="font-normal text-[25px]">Now Playing:</span>
-              <span className="text-4xl font-semibold text-white">
-                {movie.title}
-              </span>
+              <span className="text-4xl font-semibold">{movie.title}</span>
               <div className="flex items-center gap-3 text-2xl">
                 <span>{movie.vote_average}/10</span>
                 <FaStar color="#FDE047" />

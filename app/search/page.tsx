@@ -6,7 +6,6 @@ import { getSearchedMovies } from "@/utils/get-data";
 import { movieResponseType } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
@@ -23,9 +22,8 @@ export default function SearchPage() {
 
   return (
     <div className="p-5">
-      <h1 className="text-xl mb-4">
-        Search results for "{value.toUpperCase()}"
-      </h1>
+      <h1 className="text-xl mb-4">{`Search results for "${value.toUpperCase()}"`}</h1>
+
       <div className="flex flex-col gap-3">
         {foundMovies?.results.map((movie) => (
           <Link

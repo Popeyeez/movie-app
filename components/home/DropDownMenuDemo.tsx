@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { GenreResponseType, GenreType } from "@/types";
+import { GenreResponseType } from "@/types";
 import { getMovieGenres } from "@/utils/get-data";
 
 export async function DropdownMenuDemo() {

@@ -70,7 +70,7 @@ export const InputDemo = () => {
               href={`/search?value=${searchValue}`}
             >
               <Badge className="text-[14px]">
-                See all results for "{searchValue.toUpperCase()}"
+                See all results for {searchValue.toUpperCase()}
               </Badge>
             </Link>
           </PopoverContent>
