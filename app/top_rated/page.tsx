@@ -18,7 +18,7 @@ const TopRated = async ({ searchParams }: TopRatedPageProps) => {
     <div className="px-20 py-6">
       <h1 className="text-2xl font-bold mb-6">Top Rated</h1>
       <div className="flex flex-wrap gap-5 mb-10">
-        {topRatedMovies.results.map((movie) => (
+        {topRatedMovies?.results?.map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}

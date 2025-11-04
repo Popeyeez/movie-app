@@ -18,7 +18,7 @@ const SimilarPage = async ({ params, searchParams }: SimilarPageProps) => {
     <div className="px-20 py-6">
       <h1 className="text-2xl font-bold mb-6">More like this</h1>
       <div className="flex flex-wrap gap-5 mb-10">
-        {similarMovies.results.map((movie) => (
+        {similarMovies?.results?.map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}

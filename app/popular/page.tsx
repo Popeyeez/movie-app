@@ -15,7 +15,7 @@ const Popular = async ({ searchParams }: PopularPageProps) => {
     <div className="px-20 py-6">
       <h1 className="text-2xl font-bold mb-6">Popular</h1>
       <div className="flex flex-wrap gap-5 mb-10">
-        {popularMovies.results.map((movie) => (
+        {popularMovies?.results?.map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}

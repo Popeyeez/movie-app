@@ -18,7 +18,7 @@ const Upcoming = async ({ searchParams }: UpcomingPageProps) => {
     <div className="px-20 py-6">
       <h1 className="text-2xl font-bold mb-6">Upcoming</h1>
       <div className="flex flex-wrap gap-5 mb-10">
-        {upComingMovies.results.map((movie) => (
+        {upComingMovies?.results?.map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}

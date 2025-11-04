@@ -35,7 +35,7 @@ export async function DropdownMenuDemo() {
 
         <DropdownMenuGroup>
           <DropdownMenuItem className="hover:!bg-transparent flex flex-wrap text-4xl">
-            {genresResponse.genres.map((genre) => (
+            {genresResponse?.genres?.map((genre) => (
               <Link
                 key={genre.id}
                 href={`/genre?id=${genre.id}&name=${genre.name}`}

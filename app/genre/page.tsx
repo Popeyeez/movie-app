@@ -34,7 +34,7 @@ export const Genre = async ({ searchParams }: GenrePageProps) => {
             See lists of movies by genre
           </span>
           <div className="flex flex-wrap gap-2 items-center pt-5 text-4xl">
-            {genresResponse.genres.map((genre) => (
+            {genresResponse?.genres?.map((genre) => (
               <Link
                 key={genre.id}
                 href={`/genre?id=${genre.id}&name=${genre.name}`}
@@ -53,7 +53,7 @@ export const Genre = async ({ searchParams }: GenrePageProps) => {
           </h3>
 
           <div className="flex gap-8 flex-wrap pt-8 pb-5">
-            {filteredMoviesResponse.results.slice(0, 12).map((movie) => (
+            {filteredMoviesResponse?.results?.slice(0, 12).map((movie) => (
               <MovieCard
                 key={movie.id}
                 id={movie.id}

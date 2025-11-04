@@ -37,7 +37,7 @@ export const PaginationGenre = ({
           )}
         </PaginationItem>
 
-        {pages.map((p) => (
+        {pages?.map((p) => (
           <PaginationItem key={p}>
             <PaginationLink
               href={`/genre?id=${id}&name=${name}&page=${p}`}

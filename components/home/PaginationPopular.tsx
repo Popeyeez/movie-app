@@ -31,7 +31,7 @@ export const PaginationPopular = ({
           )}
         </PaginationItem>
 
-        {pages.map((p) => (
+        {pages?.map((p) => (
           <PaginationItem key={p}>
             <PaginationLink
               href={`/popular?page=${p}`}

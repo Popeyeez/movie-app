@@ -87,7 +87,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
       </div>
       <div className="flex gap-5 flex-col">
         <div className="pt-6 flex gap-3">
-          {movieResponse.genres.map((genre) => (
+          {movieResponse?.genres?.map((genre) => (
             <Link key={genre.id} href={`/genre?id=${genre.id}`}>
               <Badge variant="outline">{genre.name}</Badge>
             </Link>
@@ -97,7 +97,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
         <div className="flex gap-13">
           <span className="text-[16px] font-bold">Director</span>
           <div>
-            {directors.slice(0, 1).map((d) => (
+            {directors?.slice(0, 1).map((d) => (
               <span key={d.credit_id}>{d.name} </span>
             ))}
           </div>
@@ -105,7 +105,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
         <div className="flex gap-14">
           <span className="text-[16px] font-bold">Writers</span>
           <div>
-            {writers.slice(1, 6).map((w) => (
+            {writers?.slice(1, 6).map((w) => (
               <span key={w.credit_id}>{w.name} </span>
             ))}
           </div>
@@ -113,7 +113,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
         <div className="flex gap-[74px]">
           <span className="text-[16px] font-bold">Stars</span>
           <div>
-            {stars.slice(0, 5).map((s) => (
+            {stars?.slice(0, 5).map((s) => (
               <span key={s.id}>{s.name + " "}</span>
             ))}
           </div>
@@ -122,7 +122,7 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
       <div className="flex flex-wrap gap-8">
         <List title="More like this" href={`/detail/${id}/similar`} />
 
-        {movieSimilar.results.slice(0, 10).map((movie) => (
+        {movieSimilar?.results?.slice(0, 10).map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}

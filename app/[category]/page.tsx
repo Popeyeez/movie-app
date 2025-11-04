@@ -29,7 +29,7 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
     <div className="px-20 py-6">
       <span className="text-[24px] font-bold">{title}</span>
       <div className="flex flex-wrap gap-5 my-5">
-        {movies.results.map((movie) => (
+        {movies?.results?.map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}
